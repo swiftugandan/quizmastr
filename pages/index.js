@@ -104,7 +104,6 @@ const styles = {
     top: "2rem",
     right: "2rem",
     backgroundColor: "#fff",
-
     padding: "0 10px 0 10px",
     borderRadius: "10px 0px 10px 10px",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
