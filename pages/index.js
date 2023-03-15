@@ -37,6 +37,7 @@ const styles = {
   background: {
     backgroundColor: "#F7EFEF",
     fontFamily: "Arial, sans-serif",
+    margin: "2rem",
   },
   main: {
     padding: "2rem",
