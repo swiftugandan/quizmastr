@@ -78,6 +78,7 @@ const styles = {
     marginBottom: "2rem",
     textAlign: "center",
     width: "100%",
+    padding: "0.5rem",
   },
   wrongAnswer: {
     color: "#D93A3A",
@@ -98,7 +99,7 @@ const styles = {
     color: "#F2E7D9",
     fontSize: "2rem",
     width: "100%",
-    padding: "1rem",
+    padding: "0.5rem",
   },
   scoreTracker: {
     position: "absolute",
