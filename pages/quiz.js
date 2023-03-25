@@ -1,28 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Configuration, OpenAIApi } from "openai";
 
-const Quiz = () => {
+const Quiz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [shuffledOptions, setShuffledOptions] = useState([]);
   const [optionsShuffled, setOptionsShuffled] = useState(false);
-
-  const questions = [
-    {
-      question: "What is the capital of France?",
-      options: ["Paris", "London", "Berlin", "Madrid"],
-      answer: "Paris",
-    },
-    {
-      question: "What is the largest country in the world?",
-      options: ["Russia", "China", "USA", "Canada"],
-      answer: "Russia",
-    },
-    {
-      question: "What is the currency of Japan?",
-      options: ["Yen", "Dollar", "Euro", "Pound"],
-      answer: "Yen",
-    },
-  ];
 
   const shuffleOptions = () => {
     const shuffledArray = [...questions[currentQuestion].options];
@@ -199,7 +182,7 @@ const styles = {
   },
 };
 
-const ModalPage = () => {
+const ModalPage = ({ questions }) => {
   const overlay = {
     position: "fixed",
     top: 0,
@@ -214,9 +197,56 @@ const ModalPage = () => {
 
   return (
     <div style={overlay}>
-      <Quiz />
+      <Quiz questions={questions} />
     </div>
   );
 };
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+
+export async function getServerSideProps({ req, res }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=30, stale-while-revalidate=60"
+  );
+
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "user",
+        content: `Generate 5 questions and answers for a kids math quiz, for a Year 3 child in England strictly output as a JSON object only, as shown below:
+        [
+            {
+              "question": "What is the capital of France?",
+              "options": ["Paris", "London", "Berlin", "Madrid"],
+              "answer": "Paris"
+            },
+            {
+              "question": "What is the largest country in the world?",
+              "options": ["Russia", "China", "USA", "Canada"],
+              "answer": "Russia"
+            },
+            {
+              "question": "What is the currency of Japan?",
+              "options": ["Yen", "Dollar", "Euro", "Pound"],
+              "answer": "Yen"
+            }
+          ]
+        `,
+      },
+    ],
+  });
+
+  console.log(response.data.choices[0].message.content);
+
+  const questions = JSON.parse(response.data.choices[0].message.content);
+
+  return { props: { questions } };
+}
 
 export default ModalPage;
