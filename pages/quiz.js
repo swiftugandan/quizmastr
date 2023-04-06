@@ -159,9 +159,6 @@ const styles = {
     color: "#fff",
     fontSize: "30px",
     cursor: "pointer",
-    border: "none",
-    outline: "none",
-    transition: "background-color 0.2s ease-in-out",
   },
   "button:hover": {
     backgroundColor: "#3e8e41",
