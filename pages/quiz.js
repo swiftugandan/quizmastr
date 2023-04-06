@@ -138,10 +138,26 @@ const styles = {
     width: "100%",
     padding: "10px",
     marginBottom: "10px",
+    marginTop: "10px",
     borderRadius: "5px",
     backgroundColor: "#4caf50",
     color: "#fff",
     fontSize: "18px",
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+    transition: "background-color 0.2s ease-in-out",
+  },
+  newQuizButton: {
+    display: "block",
+    width: "100%",
+    padding: "20px",
+    marginBottom: "10px",
+    marginTop: "10px",
+    borderRadius: "5px",
+    backgroundColor: "rgb(0 0 0)",
+    color: "#fff",
+    fontSize: "30px",
     cursor: "pointer",
     border: "none",
     outline: "none",
@@ -194,9 +210,18 @@ const ModalPage = ({ questions }) => {
     justifyContent: "center",
   };
 
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <div style={overlay}>
-      <Quiz questions={questions} />
+      <div>
+        <Quiz questions={questions} />
+        <button style={styles.newQuizButton} onClick={handleReload}>
+          New Quiz
+        </button>
+      </div>
     </div>
   );
 };
@@ -219,10 +244,9 @@ export async function getServerSideProps({ req, res }) {
     "public, s-maxage=30, stale-while-revalidate=60"
   );
 
-  // Not used in the backend at the moment
   const data = {
-    subject: "mathematics",
-    year: "3",
+    subject: "geography", // english language, mathematics, science, art and design, citizenship, computing, design and technology, languages, geography, history, music, physical education, religious education
+    year: "3", // 1-11
     numberOfQuestions: "5",
   };
 
