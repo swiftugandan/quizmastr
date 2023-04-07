@@ -160,6 +160,7 @@ const styles = {
     color: "#fff",
     fontSize: "30px",
     cursor: "pointer",
+    border: "1px solid #fff",
   },
   "button:hover": {
     backgroundColor: "#3e8e41",
