@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Ajv from "ajv";
 
 const Quiz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -235,17 +236,61 @@ async function getQuizQuestions(url, data) {
   return json;
 }
 
-export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=5, stale-while-revalidate=10"
-  );
+const querySchema = {
+  type: "object",
+  properties: {
+    subject: {
+      type: "string",
+      enum: [
+        "literacy",
+        "mathematics",
+        "science",
+        "art and design",
+        "citizenship",
+        "computing",
+        "design and technology",
+        "languages",
+        "geography",
+        "history",
+        "music",
+        "physical education",
+        "religious education",
+      ],
+    },
+    year: {
+      type: "integer",
+      minimum: 1,
+      maximum: 6,
+    },
+    num: {
+      type: "integer",
+      minimum: 0,
+      maximum: 10,
+    },
+  },
+  required: [],
+};
+
+const ajv = new Ajv();
+const validate = ajv.compile(querySchema);
+
+export async function getServerSideProps(context) {
+  const { subject = "mathematics", year = "3", num = "5" } = context.query;
 
   const data = {
-    subject: "geography", // english language, mathematics, science, art and design, citizenship, computing, design and technology, languages, geography, history, music, physical education, religious education
-    year: "3", // 1-11
-    numberOfQuestions: "5",
+    subject: subject.toLowerCase(),
+    year: parseInt(year),
+    numberOfQuestions: parseInt(num),
   };
+
+  const valid = validate(data);
+
+  if (!valid) {
+    console.error(validate.errors);
+    throw new Error("Invalid query parameters");
+  }
+
+  console.log(data);
 
   const sharedSecret = process.env.SHARED_SECRET;
   const url = `https://us-east-1.aws.data.mongodb-api.com/app/data-mgwtr/endpoint/getQuizQuestions?secret=${sharedSecret}`;
