@@ -30,6 +30,7 @@ export const Header = () => {
     },
     icon: {
       marginRight: "8px",
+      fontSize: "24px",
     },
     links: {
       display: "flex",

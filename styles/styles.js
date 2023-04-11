@@ -6,6 +6,13 @@ export const overlay = {
   justifyContent: "center",
 };
 
+export const quizContainer = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+};
+
 export const pageTitle = {
   fontSize: "2rem",
   fontWeight: "bold",
@@ -20,9 +27,8 @@ export const pageTitle = {
 
 export const newQuizButton = {
   display: "block",
-  width: "100%",
+  width: "90%",
   padding: "20px",
-  marginTop: "2rem",
   marginBottom: "4rem",
   borderRadius: "5px",
   backgroundColor: "rgb(0 0 0)",

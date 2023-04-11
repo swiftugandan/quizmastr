@@ -76,14 +76,14 @@ export const Quiz = ({ questions }) => {
         <ul style={styles.resultList}>
           {questions.map((question, index) => (
             <li key={question.question} style={styles.resultItem}>
-              {question.question} -
+              {question.question}
               <span
                 style={{
                   fontWeight: "bold",
                   color: answers[index] === question.answer ? "green" : "red",
                 }}
               >
-                {answers[index]}
+                {` Answer: ${answers[index]}`}
               </span>
               {question.options && (
                 <ul>
@@ -93,6 +93,8 @@ export const Quiz = ({ questions }) => {
                       style={{
                         fontWeight:
                           option === question.answer ? "bold" : "normal",
+                        fontSize: "16px",
+                        fontStyle: "italic",
                       }}
                     >
                       {option}
@@ -124,7 +126,7 @@ const styles = {
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     maxWidth: "500px",
-    margin: "2rem",
+    margin: "1rem",
   },
   questionContainer: {
     backgroundColor: "#fff",

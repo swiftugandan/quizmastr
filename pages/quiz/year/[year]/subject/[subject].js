@@ -2,7 +2,12 @@ import React from "react";
 import { useRouter } from "next/router";
 import Ajv from "ajv";
 import { Quiz } from "@/components/Quiz";
-import { overlay, pageTitle, newQuizButton } from "@/styles/styles";
+import {
+  overlay,
+  pageTitle,
+  newQuizButton,
+  quizContainer,
+} from "@/styles/styles";
 
 const QuizPage = ({ questions }) => {
   const router = useRouter();
@@ -14,7 +19,7 @@ const QuizPage = ({ questions }) => {
 
   return (
     <div style={overlay}>
-      <div>
+      <div style={quizContainer}>
         <h1 style={pageTitle}>
           {subject} Quiz (Level {year})
         </h1>
