@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Ajv from "ajv";
 
-const Quiz = ({ questions }) => {
+export const Quiz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [shuffledOptions, setShuffledOptions] = useState([]);
@@ -47,6 +46,13 @@ const Quiz = ({ questions }) => {
           <button
             key={option}
             style={styles.button}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.boxShadow = "0px 0px 1px 2px #3e8e41")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.boxShadow =
+                "0px 4px 4px rgba(0, 0, 0, 0.25)")
+            }
             onClick={() => handleAnswer(option)}
           >
             {option}
@@ -118,7 +124,7 @@ const styles = {
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     maxWidth: "500px",
-    margin: "0 auto",
+    margin: "2rem",
   },
   questionContainer: {
     backgroundColor: "#fff",
@@ -141,7 +147,7 @@ const styles = {
     marginBottom: "10px",
     marginTop: "10px",
     borderRadius: "5px",
-    backgroundColor: "#4caf50",
+    backgroundColor: "rgb(22 70 87)",
     color: "#fff",
     fontSize: "18px",
     cursor: "pointer",
@@ -149,20 +155,7 @@ const styles = {
     outline: "none",
     transition: "background-color 0.2s ease-in-out",
   },
-  newQuizButton: {
-    display: "block",
-    width: "100%",
-    padding: "20px",
-    marginBottom: "10px",
-    marginTop: "10px",
-    borderRadius: "5px",
-    backgroundColor: "rgb(0 0 0)",
-    color: "#fff",
-    fontSize: "30px",
-    cursor: "pointer",
-    border: "1px solid #fff",
-  },
-  "button:hover": {
+  buttonHover: {
     backgroundColor: "#3e8e41",
   },
   resultContainer: {
@@ -195,110 +188,3 @@ const styles = {
     color: "#333",
   },
 };
-
-const ModalPage = ({ questions }) => {
-  const overlay = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  };
-
-  const handleReload = () => {
-    window.location.reload();
-  };
-
-  return (
-    <div style={overlay}>
-      <div>
-        <Quiz questions={questions} />
-        <button style={styles.newQuizButton} onClick={handleReload}>
-          New Quiz
-        </button>
-      </div>
-    </div>
-  );
-};
-
-async function getQuizQuestions(url, data) {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-  const json = await response.json();
-  return json;
-}
-
-const querySchema = {
-  type: "object",
-  properties: {
-    subject: {
-      type: "string",
-      enum: [
-        "literacy",
-        "mathematics",
-        "science",
-        "art and design",
-        "citizenship",
-        "computing",
-        "design and technology",
-        "languages",
-        "geography",
-        "history",
-        "music",
-        "physical education",
-        "religious education",
-      ],
-    },
-    year: {
-      type: "integer",
-      minimum: 1,
-      maximum: 6,
-    },
-    num: {
-      type: "integer",
-      minimum: 0,
-      maximum: 10,
-    },
-  },
-  required: [],
-};
-
-const ajv = new Ajv();
-const validate = ajv.compile(querySchema);
-
-export async function getServerSideProps(context) {
-  const { subject = "mathematics", year = "3", num = "5" } = context.query;
-
-  const data = {
-    subject: subject.toLowerCase(),
-    year: parseInt(year),
-    numberOfQuestions: parseInt(num),
-  };
-
-  const valid = validate(data);
-
-  if (!valid) {
-    console.error(validate.errors);
-    throw new Error("Invalid query parameters");
-  }
-
-  console.log(data);
-
-  const sharedSecret = process.env.SHARED_SECRET;
-  const url = `https://us-east-1.aws.data.mongodb-api.com/app/data-mgwtr/endpoint/getQuizQuestions?secret=${sharedSecret}`;
-
-  const questions = await getQuizQuestions(url, data);
-
-  return { props: { questions } };
-}
-
-export default ModalPage;
