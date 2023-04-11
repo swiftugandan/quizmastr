@@ -20,7 +20,7 @@ export function SubjectGrid(props) {
     <div style={gridStyle}>
       {props.subjects.map((subject) => (
         <SubjectCard
-          key={subject.id}
+          key={subject.title}
           title={subject.title}
           icon={subject.icon}
           description={subject.description}

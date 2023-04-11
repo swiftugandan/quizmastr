@@ -49,7 +49,7 @@ export const subjectsContainer = {
 };
 
 export const yearsMediaQueries = {
-  "@media screen and (max-width: 768px)": {
+  "@media screen and (maxWidth: 768px)": {
     maxWidth: "100%",
     padding: "0",
   },
