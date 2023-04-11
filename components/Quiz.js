@@ -131,11 +131,10 @@ const styles = {
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
-    marginBottom: "20px",
     fontFamily: "sans-serif",
   },
   question: {
-    fontSize: "40px",
+    fontSize: "24px",
     marginBottom: "20px",
     textAlign: "center",
     color: "#333",
@@ -143,7 +142,7 @@ const styles = {
   button: {
     display: "block",
     width: "100%",
-    padding: "10px",
+    padding: "20px",
     marginBottom: "10px",
     marginTop: "10px",
     borderRadius: "5px",
