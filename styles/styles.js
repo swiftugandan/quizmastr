@@ -14,7 +14,7 @@ export const quizContainer = {
 };
 
 export const pageTitle = {
-  fontSize: "2rem",
+  fontSize: "1.8rem",
   fontWeight: "bold",
   color: "#fff",
   textAlign: "center",
