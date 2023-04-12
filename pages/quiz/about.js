@@ -53,7 +53,8 @@ const styles = {
     fontSize: "22px",
     lineHeight: "1.5",
     marginBottom: "30px",
-    justifyContent: "space-between",
+    textAlign: "justify",
+    textJustify: "inter-word",
   },
 };
 
