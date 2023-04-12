@@ -40,8 +40,8 @@ const styles = {
     maxWidth: "600px",
     margin: "1rem",
     backgroundColor: "#f5f5f5",
-    marginTop: "4rem",
-    marginBottom: "4rem",
+    marginTop: "6rem",
+    marginBottom: "6rem",
     fontFamily: "sans-serif",
   },
   heading: {
