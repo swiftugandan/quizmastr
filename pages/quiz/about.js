@@ -13,10 +13,10 @@ const AboutUs = () => {
           everyone, and that's why we created this quiz app.
         </p>
         <p style={styles.text}>
-          This app is designed to help students test their knowledge and learn
-          new things in a fun and interactive way. With a variety of questions
-          on different subjects, our quizzes are perfect for students who want
-          to challenge themselves and expand their horizons.
+          It is designed to help students test their knowledge and learn new
+          things in a fun and interactive way. With a variety of questions on
+          different subjects, our quizzes are perfect for students who want to
+          challenge themselves and expand their horizons.
         </p>
         <p style={styles.text}>
           Whether you're looking to improve your general knowledge, prepare for
