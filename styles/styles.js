@@ -35,12 +35,12 @@ export const pageSubTitle = {
 export const newQuizButton = {
   display: "block",
   width: "90%",
-  padding: "20px",
+  padding: "1rem",
   marginBottom: "4rem",
-  borderRadius: "5px",
+  borderRadius: "0.5rem",
   backgroundColor: "rgb(0 0 0)",
   color: "#fff",
-  fontSize: "30px",
+  fontSize: "1.8rem",
   cursor: "pointer",
   border: "1px solid #fff",
 };
