@@ -32,7 +32,7 @@ export function YearCard(props) {
 
   return (
     <Link
-      href={`/quiz/year/${props.year}`}
+      href={`/year/${props.year}`}
       style={cardStyle}
       onMouseEnter={(e) =>
         (e.currentTarget.style.boxShadow =

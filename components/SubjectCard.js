@@ -32,7 +32,7 @@ export function SubjectCard(props) {
 
   return (
     <Link
-      href={`/quiz/year/${props.year}/subject/${props.subject}`}
+      href={`/year/${props.year}/subject/${props.subject}`}
       style={cardStyle}
       onMouseEnter={(e) =>
         (e.currentTarget.style.boxShadow = "0px 0px 10px 2px #00FFFF")

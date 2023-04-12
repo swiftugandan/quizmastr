@@ -50,11 +50,11 @@ export const Header = () => {
 
   return (
     <header style={styles.header}>
-      <Link href="/quiz" style={styles.logo}>
+      <Link href="/" style={styles.logo}>
         <FontAwesomeIcon icon={faHome} style={styles.icon} />
       </Link>
       <nav style={styles.links}>
-        <Link href="/quiz/about" style={styles.link}>
+        <Link href="/about" style={styles.link}>
           <FontAwesomeIcon icon={faInfoCircle} style={styles.icon} />
         </Link>
         <Link href="/contact" style={styles.link}>
