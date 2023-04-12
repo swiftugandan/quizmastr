@@ -18,7 +18,7 @@ const YearsPage = () => {
   return (
     <div style={overlay}>
       <div style={responsiveContainer}>
-        <h1 style={pageTitle}>Welcome to quizmastr!</h1>
+        <h1 style={pageTitle}>Welcome to Quizmastr!</h1>
         <h2 style={pageSubTitle}>Select a level to start</h2>
         <YearGrid />
       </div>
