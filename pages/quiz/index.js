@@ -5,6 +5,7 @@ import {
   yearsContainer,
   yearsMediaQueries,
   pageTitle,
+  pageSubTitle,
 } from "@/styles/styles";
 
 const YearsPage = () => {
@@ -17,7 +18,8 @@ const YearsPage = () => {
   return (
     <div style={overlay}>
       <div style={responsiveContainer}>
-        <h1 style={pageTitle}>Select a Level</h1>
+        <h1 style={pageTitle}>Welcome to quizmastr!</h1>
+        <h2 style={pageSubTitle}>Select a level to start</h2>
         <YearGrid />
       </div>
     </div>

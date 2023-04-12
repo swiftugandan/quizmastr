@@ -25,6 +25,13 @@ export const pageTitle = {
   marginRight: "2rem",
 };
 
+export const pageSubTitle = {
+  ...pageTitle,
+  fontSize: "1.2rem",
+  marginBottom: "1rem",
+  marginTop: "1rem",
+};
+
 export const newQuizButton = {
   display: "block",
   width: "90%",
