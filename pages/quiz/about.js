@@ -10,7 +10,7 @@ const AboutUs = () => {
           Welcome to our quiz app! Our team consists of educators and developers
           who are dedicated to making learning fun and engaging for students. We
           believe that education should be accessible and enjoyable for
-          everyone, and that's why we created this quiz app.
+          everyone, and that is why we created this quiz app.
         </p>
         <p style={styles.text}>
           It is designed to help students test their knowledge and learn new
