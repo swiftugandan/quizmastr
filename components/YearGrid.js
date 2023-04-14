@@ -12,12 +12,11 @@ import { YearCard } from "./YearCard";
 export function YearGrid(props) {
   const gridStyle = {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)", // three columns of equal width
-    gap: "20px", // 20px gap between grid items
-    justifyContent: "center", // center grid items horizontally
-    alignItems: "center", // center grid items vertically
-    padding: "20px", // add some padding to the grid
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", // automatically adjust columns based on screen width
+    gap: "1rem",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "1rem",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     marginBottom: "4rem",
   };
 

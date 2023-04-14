@@ -8,11 +8,11 @@ export function SubjectGrid(props) {
 
   const gridStyle = {
     display: "grid",
-    gridGap: "20px",
+    gap: "1rem",
     justifyContent: "center",
     alignItems: "center",
-    padding: "20px",
-    gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", // automatically adjust columns based on screen width
+    padding: "1rem",
+    gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
     marginBottom: "4rem",
   };
 
