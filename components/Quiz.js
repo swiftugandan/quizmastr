@@ -1,10 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export const Quiz = ({ questions }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [shuffledOptions, setShuffledOptions] = useState([]);
   const [optionsShuffled, setOptionsShuffled] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState(0);
+
+  const timerRef = useRef(null);
+  const startTime = useRef(Date.now());
+
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      const elapsedTime = Math.floor((Date.now() - startTime.current) / 1000);
+      setTimeElapsed(elapsedTime);
+    }, 1000);
+    return () => clearInterval(timerRef.current);
+  }, []);
 
   const shuffleOptions = () => {
     const shuffledArray = [...questions[currentQuestion].options];
@@ -35,16 +47,19 @@ export const Quiz = ({ questions }) => {
     setCurrentQuestion(0);
     setAnswers([]);
     setOptionsShuffled(false);
+    startTime.current = Date.now();
+    setTimeElapsed(0);
   };
 
   const renderQuestion = () => {
     const { question, image, audio, video } = questions[currentQuestion];
+    const header = `Question ${currentQuestion + 1} of ${questions.length}`;
     return (
       <div style={styles.questionContainer}>
-        {/* <iframe
-          src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"
-          style={styles.media}
-        /> */}
+        <div style={styles.questionHeader}>
+          <div>{header}</div>
+          <div>{timeElapsed} seconds</div>
+        </div>
         {image && (
           <img src={image} alt="Reference Picture" style={styles.media} />
         )}
@@ -219,5 +234,12 @@ const styles = {
     width: "100%",
     marginBottom: "20px",
     borderRadius: "10px",
+  },
+  questionHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "1rem",
+    borderBottom: "1px solid #ccc",
   },
 };
