@@ -38,9 +38,36 @@ export const Quiz = ({ questions }) => {
   };
 
   const renderQuestion = () => {
-    const { question } = questions[currentQuestion];
+    const { question, image, audio, video } = questions[currentQuestion];
     return (
       <div style={styles.questionContainer}>
+        {/* <iframe
+          src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0"
+          style={styles.media}
+        /> */}
+        {image && (
+          <img src={image} alt="Reference Picture" style={styles.media} />
+        )}
+        {audio && (
+          <audio
+            controls
+            controlslist="nofullscreen nodownload noplaybackrate"
+            src={audio}
+            style={styles.media}
+          >
+            Audio element not supported.
+          </audio>
+        )}
+        {video && (
+          <video
+            controls
+            controlslist="nofullscreen nodownload noplaybackrate"
+            src={video}
+            style={styles.media}
+          >
+            Video element not supported.
+          </video>
+        )}
         <h2 style={styles.question}>{question}</h2>
         {shuffledOptions.map((option) => (
           <button
@@ -187,5 +214,10 @@ const styles = {
     fontSize: "18px",
     marginBottom: "10px",
     color: "#333",
+  },
+  media: {
+    width: "100%",
+    marginBottom: "20px",
+    borderRadius: "10px",
   },
 };
