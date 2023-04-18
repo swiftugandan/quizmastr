@@ -202,12 +202,13 @@ const styles = {
     width: "100%",
   },
   input: {
-    fontSize: "1.5rem",
+    fontSize: "1.2rem",
     padding: "1rem",
     borderRadius: "5px",
     border: "1px solid purple",
     width: "75%",
     backgroundColor: "white",
+    color: "#333",
   },
   label: {
     fontSize: "0.9rem",
@@ -247,7 +248,7 @@ const styles = {
     alignItems: "center",
     marginRight: "1rem",
     cursor: "pointer",
-    backgroundColor: "#fff",
+    backgroundColor: "#f5f5f5",
   },
 };
 
