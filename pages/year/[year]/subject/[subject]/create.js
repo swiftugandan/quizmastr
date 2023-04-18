@@ -207,6 +207,7 @@ const styles = {
     borderRadius: "5px",
     border: "1px solid purple",
     width: "75%",
+    backgroundColor: "white",
   },
   label: {
     fontSize: "0.9rem",
@@ -246,6 +247,7 @@ const styles = {
     alignItems: "center",
     marginRight: "1rem",
     cursor: "pointer",
+    backgroundColor: "#fff",
   },
 };
 
