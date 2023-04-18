@@ -164,15 +164,15 @@ export const Quiz = ({ questions }) => {
 const styles = {
   container: {
     backgroundColor: "#f5f5f5",
-    padding: "20px",
+    padding: "1rem",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     maxWidth: "500px",
-    margin: "1rem",
+    margin: "0.5rem",
   },
   questionContainer: {
     backgroundColor: "#fff",
-    padding: "20px",
+    padding: "1rem",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     fontFamily: "sans-serif",
@@ -241,5 +241,6 @@ const styles = {
     alignItems: "center",
     marginBottom: "1rem",
     borderBottom: "1px solid #ccc",
+    color: "#333",
   },
 };

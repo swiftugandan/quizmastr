@@ -56,6 +56,7 @@ const styles = {
     marginBottom: "30px",
     textAlign: "justify",
     textJustify: "inter-word",
+    color: "#333",
   },
 };
 
