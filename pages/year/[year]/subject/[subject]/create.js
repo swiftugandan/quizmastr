@@ -245,6 +245,8 @@ const styles = {
     border: "none",
     cursor: "pointer",
     marginRight: "0.5rem",
+    borderRadius: "50%",
+    backgroundColor: "#f5f5f5",
   },
   removeButton: {
     position: "relative",
