@@ -8,8 +8,7 @@ You can bring your own backend and point an instance of the application to it, w
 
 For developers, this is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-
-To, run the development server:
+To, run the development server locally:
 
 ```bash
 npm run dev
@@ -21,6 +20,8 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+You can also use Gitpod in the cloud [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/swiftugandan/quizmastr/)
+
 
 ## Deploy on Vercel
 
@@ -31,3 +32,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## License
 
 Licensed under the [MIT license](https://github.com/swiftugandan/quizmastr/blob/main/README.md)
+
+
+## 🧰 Contributing
+
+- Contributions make the open source community an amazing place to learn, inspire, and create.
+- Any contributions you make are **truly appreciated**.
+
+## 🙏 Support
+
+Don't forget to leave a star ⭐️
