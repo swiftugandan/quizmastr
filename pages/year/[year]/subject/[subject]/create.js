@@ -232,7 +232,6 @@ const styles = {
     width: "100px",
   },
   button: {
-    float: "right",
     fontSize: "1.2rem",
     backgroundColor: "purple",
     color: "#fff",
@@ -240,7 +239,7 @@ const styles = {
     border: "none",
     borderRadius: "5px",
     cursor: "pointer",
-    marginLeft: "1rem",
+    width: "100%",
   },
   addButton: {
     border: "none",
