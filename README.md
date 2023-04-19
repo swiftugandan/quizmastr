@@ -6,7 +6,7 @@ You can bring your own backend and point an instance of the application to it, w
 
 ## Getting Started
 
-For developers,this is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+For developers, this is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
 To, run the development server:
@@ -30,4 +30,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## License
 
-Licensed under the [MIT license]
+Licensed under the [MIT license](https://github.com/swiftugandan/quizmastr/blob/main/README.md)
