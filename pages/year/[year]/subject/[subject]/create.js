@@ -116,11 +116,35 @@ const QuestionCreator = () => {
               />
             </div>
             <div style={styles.fieldSet}>
+              <div style={styles.fieldSetHeader}>
+                <div>Answer Choices</div>
+                <button
+                  type="button"
+                  onClick={handleAddOption}
+                  style={styles.addButton}
+                >
+                  <FontAwesomeIcon
+                    icon={faPlusCircle}
+                    style={{ color: "purple", fontSize: "1.5rem" }}
+                  />
+                </button>
+              </div>
               {options.map((option, index) => (
                 <div key={index} style={styles.field}>
                   <label htmlFor={`option-${index}`} style={styles.label}>
                     Choice {index + 1}:
                   </label>
+
+                  <input
+                    type="text"
+                    id={`option-${index}`}
+                    value={option}
+                    onChange={(event) =>
+                      handleOptionChange(index, event.target.value)
+                    }
+                    required
+                    style={styles.input}
+                  />
                   {options.length > 2 && (
                     <button
                       type="button"
@@ -133,34 +157,12 @@ const QuestionCreator = () => {
                       />
                     </button>
                   )}
-                  <input
-                    type="text"
-                    id={`option-${index}`}
-                    value={option}
-                    onChange={(event) =>
-                      handleOptionChange(index, event.target.value)
-                    }
-                    required
-                    style={styles.input}
-                  />
                 </div>
               ))}
             </div>
-            <div style={styles.field}>
-              <button
-                type="button"
-                onClick={handleAddOption}
-                style={styles.addButton}
-              >
-                <FontAwesomeIcon
-                  icon={faPlusCircle}
-                  style={{ color: "purple", fontSize: "1.5rem" }}
-                />
-              </button>
-              <button type="submit" style={styles.button}>
-                Submit
-              </button>
-            </div>
+            <button type="submit" style={styles.button}>
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -191,8 +193,19 @@ const styles = {
     alignItems: "center",
     marginBottom: "1rem",
     padding: "1rem",
+    paddingBottom: "0rem",
     borderRadius: "10px",
     border: "1px solid purple",
+  },
+  fieldSetHeader: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "1rem",
+    width: "100%",
+    fontSize: "0.9rem",
+    fontWeight: "bold",
+    color: "#333",
   },
   field: {
     display: "flex",
@@ -209,6 +222,7 @@ const styles = {
     width: "75%",
     backgroundColor: "white",
     color: "#333",
+    resize: "vertical",
   },
   label: {
     fontSize: "0.9rem",
@@ -218,6 +232,7 @@ const styles = {
     width: "100px",
   },
   button: {
+    float: "right",
     fontSize: "1.2rem",
     backgroundColor: "purple",
     color: "#fff",
@@ -228,27 +243,17 @@ const styles = {
     marginLeft: "1rem",
   },
   addButton: {
-    backgroundColor: "#fff",
-    border: "1px solid purple",
-    borderRadius: "50%",
-    width: "2.5rem",
-    height: "2.5rem",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: "1rem",
+    border: "none",
     cursor: "pointer",
+    marginRight: "0.5rem",
   },
   removeButton: {
+    position: "relative",
     border: "none",
-    width: "2.5rem",
-    height: "2.5rem",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: "1rem",
+    marginRight: "-1.5rem",
     cursor: "pointer",
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#fff",
+    right: "2rem",
   },
 };
 
