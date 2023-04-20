@@ -47,7 +47,7 @@ export const newQuizButton = {
 
 export const container = {
   width: "100%",
-  maxWidth: "1200px",
+  maxWidth: "1100px",
   margin: "0 auto",
   padding: "0 1rem",
 };
