@@ -57,9 +57,6 @@ export const Header = () => {
         <Link href="/about" style={styles.link}>
           <FontAwesomeIcon icon={faInfoCircle} style={styles.icon} />
         </Link>
-        <Link href="/contact" style={styles.link}>
-          <FontAwesomeIcon icon={faEnvelope} style={styles.icon} />
-        </Link>
       </nav>
     </header>
   );
