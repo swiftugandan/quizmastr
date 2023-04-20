@@ -168,6 +168,7 @@ const styles = {
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
     maxWidth: "500px",
+    minWidth: "260px",
     margin: "0.5rem",
   },
   questionContainer: {

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -31,8 +32,10 @@ export const Footer = () => {
             alignItems: "center",
           }}
         >
+          <Link href="https://github.com/swiftugandan/quizmastr">
+            <FontAwesomeIcon icon={faGithub} style={{ marginRight: "10px" }} />
+          </Link>
           <FontAwesomeIcon icon={faTwitter} style={{ marginRight: "10px" }} />
-          <FontAwesomeIcon icon={faGithub} style={{ marginRight: "10px" }} />
         </div>
       </div>
     </div>
