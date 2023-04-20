@@ -2,6 +2,8 @@
 
 Quizmastr is designed to help students test their knowledge and learn new things in a fun and interactive way. With a variety of questions on different subjects, the quizzes are perfect for students who want to challenge themselves and expand their horizons.
 
+![screen-gif](./quizmastr.gif)
+
 You can bring your own backend and point an instance of the application to it, with some minor updates to the [Quiz Page](https://github.com/swiftugandan/quizmastr/blob/32b4a2a2fbc9f7cdfaafcbd7b144b76c8fd20c68/pages/year/%5Byear%5D/subject/%5Bsubject%5D/index.js#L96).
 
 ## Getting Started
