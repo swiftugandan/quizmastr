@@ -16,7 +16,7 @@ export function YearGrid(props) {
     justifyContent: "center",
     alignItems: "center",
     padding: "1rem",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
     marginBottom: "4rem",
   };
 
