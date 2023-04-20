@@ -28,7 +28,7 @@ You can also use Gitpod in the cloud [![Gitpod Ready-to-Code](https://img.shield
 ## Deploy on Vercel
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fswiftugandan%2Fquizmastr)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js) from the creators of Next.js.
+The easiest way to deploy your own Quizmastr is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js) from the creators of Next.js.
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
@@ -37,11 +37,11 @@ Check out the [Next.js deployment documentation](https://nextjs.org/docs/deploym
 Licensed under the [MIT license](https://github.com/swiftugandan/quizmastr/blob/main/README.md)
 
 
-## 🧰 Contributing
+## Contributing
 
-- Contributions make the open source community an amazing place to learn, inspire, and create.
+- Contributions make this open source community an amazing place to learn, inspire, and create.
 - Any contributions you make are **truly appreciated**.
 
-## 🙏 Support
+## Support
 
 Don't forget to leave a star ⭐️
