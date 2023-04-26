@@ -261,7 +261,9 @@ const QuizHeader = ({
       <ProgressBar timeElapsed={timeElapsed} totalTime={totalTime} />
       <div style={styles.questionHeader}>
         <div>{`Question ${currentQuestion + 1} of ${totalQuestions}`}</div>
-        <div>{totalTime - timeElapsed} seconds left</div>
+        <div style={{ marginLeft: "20%" }}>
+          {totalTime - timeElapsed} seconds left
+        </div>
       </div>
     </>
   );
