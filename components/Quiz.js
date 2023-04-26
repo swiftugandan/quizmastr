@@ -9,7 +9,7 @@ import { shuffle } from "lodash";
 
 const styles = {
   container: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#e6f7ff",
     padding: "1rem",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
@@ -28,7 +28,7 @@ const styles = {
     fontSize: "24px",
     marginBottom: "20px",
     textAlign: "center",
-    color: "#333",
+    color: "#2e64b5",
   },
   button: {
     display: "block",
@@ -45,9 +45,6 @@ const styles = {
     outline: "none",
     transition: "background-color 0.2s ease-in-out",
   },
-  buttonHover: {
-    backgroundColor: "#3e8e41",
-  },
   resultContainer: {
     backgroundColor: "#fff",
     padding: "20px",
@@ -59,13 +56,13 @@ const styles = {
     fontSize: "24px",
     marginBottom: "20px",
     textAlign: "center",
-    color: "#333",
+    color: "#2e64b5",
   },
   resultText: {
     fontSize: "18px",
     marginBottom: "20px",
     textAlign: "center",
-    color: "#333",
+    color: "#2e64b5",
   },
   resultList: {
     listStyle: "none",
@@ -75,7 +72,8 @@ const styles = {
   resultItem: {
     fontSize: "18px",
     marginBottom: "10px",
-    color: "#333",
+    color: "#2e64b5",
+    marginBottom: "20px",
   },
   media: {
     width: "100%",
@@ -111,34 +109,26 @@ const reducer = (state, action) => {
       return { ...state, answers: [...state.answers, action.payload] };
     case "SET_TIME_ELAPSED":
       return { ...state, timeElapsed: action.payload };
-    case "RESET":
-      return { currentQuestion: 0, answers: [], timeElapsed: 0 };
     default:
       return state;
   }
 };
 
-const Question = ({ question, handleAnswer, timeElapsed, id, total }) => {
+const useShuffledOptions = (question) => {
   const [shuffledOptions, setShuffledOptions] = useState([]);
 
   useEffect(() => {
     setShuffledOptions(shuffle([...question.options]));
   }, [question]);
 
+  return shuffledOptions;
+};
+
+const Question = React.memo(({ question, handleAnswer }) => {
+  const shuffledOptions = useShuffledOptions(question);
+
   return (
-    <div style={styles.questionContainer}>
-      <div style={styles.progressBar}>
-        <div
-          style={{
-            ...styles.progressFill,
-            width: `${(id / total) * 100}%`,
-          }}
-        ></div>
-      </div>
-      <div style={styles.questionHeader}>
-        <div>{`Question ${id} of ${total}`}</div>
-        <div>{timeElapsed} seconds</div>
-      </div>
+    <>
       {question.image && (
         <img
           src={question.image}
@@ -183,80 +173,132 @@ const Question = ({ question, handleAnswer, timeElapsed, id, total }) => {
           {option}
         </button>
       ))}
-    </div>
+    </>
   );
-};
+});
 
-const Result = ({ questions, answers, handleRestart }) => {
+const Result = React.memo(({ questions, answers }) => {
   const correctAnswers = answers.filter(
     (answer, index) => answer === questions[index].answer
   );
 
+  const quizEnded = answers.length === questions.length;
+
   return (
-    <div style={styles.resultContainer}>
+    <>
       <h2 style={styles.resultTitle}>Quiz Result</h2>
-      <p style={styles.resultText}>
-        You got {correctAnswers.length} out of {questions.length} questions
-        correct.
-      </p>
-      <ul style={styles.resultList}>
-        {questions.map((question, index) => (
-          <li key={question.question} style={styles.resultItem}>
-            {question.question}
-            <span
-              style={{
-                fontWeight: "bold",
-                color: answers[index] === question.answer ? "green" : "red",
-              }}
-            >
-              {` Answer: ${answers[index]}`}
-            </span>
-            {question.options && (
-              <ul>
-                {question.options.map((option) => (
-                  <li
-                    key={option}
-                    style={{
-                      fontWeight:
-                        option === question.answer ? "bold" : "normal",
-                      fontSize: "16px",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-      <button style={styles.button} onClick={handleRestart}>
-        Restart Quiz
-      </button>
+      {quizEnded ? (
+        <>
+          <p style={styles.resultText}>
+            You got {correctAnswers.length} out of {questions.length} questions
+            correct.
+          </p>
+          <ul style={styles.resultList}>
+            {questions.map((question, index) => (
+              <li key={question.question} style={styles.resultItem}>
+                {`${question.question}`}
+                {question.options && (
+                  <ul>
+                    {question.options.map((option) => (
+                      <li
+                        key={option}
+                        style={{
+                          fontWeight:
+                            option === answers[index] ? "bold" : "normal",
+                          color:
+                            option === question.answer
+                              ? "green"
+                              : option === answers[index]
+                              ? "red"
+                              : "black",
+                          fontSize: "16px",
+                          fontStyle: "italic",
+                          marginBottom: "0.25rem",
+                          marginLeft: "1.5rem",
+                        }}
+                      >
+                        {answers[index] === option
+                          ? `${option} (Your Answer)`
+                          : option === question.answer
+                          ? `${option} (Correct Answer)`
+                          : option}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p style={styles.resultText}>
+          You have run out of time to answer the questions, please try another
+          quiz!
+        </p>
+      )}
+    </>
+  );
+});
+
+const ProgressBar = React.memo(({ timeElapsed, totalTime }) => {
+  const progress = ((totalTime - timeElapsed) / totalTime) * 100;
+
+  return (
+    <div style={styles.progressBar}>
+      <div style={{ ...styles.progressFill, width: `${progress}%` }}></div>
     </div>
   );
+});
+
+const QuizHeader = React.memo(
+  ({ currentQuestion, totalQuestions, timeElapsed, totalTime }) => {
+    return (
+      <>
+        <ProgressBar timeElapsed={timeElapsed} totalTime={totalTime} />
+        <div style={styles.questionHeader}>
+          <div>{`Question ${currentQuestion + 1} of ${totalQuestions}`}</div>
+          <div>{totalTime - timeElapsed} seconds left</div>
+        </div>
+      </>
+    );
+  }
+);
+
+const useQuizTimer = (totalTime, currentQuestion) => {
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const startTime = useRef(Date.now());
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    if (currentQuestion === 0) {
+      setTimeElapsed(0);
+      startTime.current = Date.now();
+    }
+    timerRef.current = setInterval(() => {
+      const elapsedTime = Math.floor((Date.now() - startTime.current) / 1000);
+      setTimeElapsed(elapsedTime);
+      if (elapsedTime >= totalTime) {
+        clearInterval(timerRef.current);
+      }
+    }, 1000);
+    return () => clearInterval(timerRef.current);
+  }, [currentQuestion]);
+
+  return timeElapsed;
 };
 
-export const Quiz = ({ questions }) => {
+export const Quiz = React.memo(({ questions, totalTime = 60 }) => {
   const [state, dispatch] = useReducer(reducer, {
     currentQuestion: 0,
     answers: [],
     timeElapsed: 0,
   });
 
-  const { currentQuestion, answers, timeElapsed } = state;
+  const { currentQuestion, answers } = state;
+  const totalQuestions = questions.length;
 
-  const timerRef = useRef(null);
-  const startTime = useRef(Date.now());
-
-  useEffect(() => {
-    timerRef.current = setInterval(() => {
-      const elapsedTime = Math.floor((Date.now() - startTime.current) / 1000);
-      dispatch({ type: "SET_TIME_ELAPSED", payload: elapsedTime });
-    }, 1000);
-    return () => clearInterval(timerRef.current);
-  }, []);
+  // Use the custom hook for timer logic
+  const timeElapsed = useQuizTimer(totalTime, currentQuestion);
 
   const handleAnswer = useCallback(
     (answer) => {
@@ -266,28 +308,28 @@ export const Quiz = ({ questions }) => {
     [currentQuestion]
   );
 
-  const handleRestart = useCallback(() => {
-    dispatch({ type: "RESET" });
-    startTime.current = Date.now();
-  }, []);
-
   return (
     <div style={styles.container}>
-      {currentQuestion < questions.length ? (
-        <Question
-          question={questions[currentQuestion]}
-          handleAnswer={handleAnswer}
-          timeElapsed={timeElapsed}
-          id={currentQuestion + 1}
-          total={questions.length}
-        />
-      ) : (
-        <Result
-          questions={questions}
-          answers={answers}
-          handleRestart={handleRestart}
-        />
-      )}
+      <div style={styles.questionContainer}>
+        {currentQuestion < totalQuestions && timeElapsed < totalTime ? (
+          <>
+            <QuizHeader
+              currentQuestion={currentQuestion}
+              totalQuestions={totalQuestions}
+              timeElapsed={timeElapsed}
+              totalTime={totalTime}
+            />
+            <Question
+              question={questions[currentQuestion]}
+              handleAnswer={handleAnswer}
+            />
+          </>
+        ) : (
+          <>
+            <Result questions={questions} answers={answers} />
+          </>
+        )}
+      </div>
     </div>
   );
-};
+});
