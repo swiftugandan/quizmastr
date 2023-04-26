@@ -124,159 +124,148 @@ const useShuffledOptions = (question) => {
   return shuffledOptions;
 };
 
-const Question = React.memo(
-  ({ question, handleAnswer }) => {
-    const shuffledOptions = useShuffledOptions(question);
+const Question = ({ question, handleAnswer }) => {
+  const shuffledOptions = useShuffledOptions(question);
 
-    return (
-      <>
-        {question.image && (
-          <img
-            src={question.image}
-            alt="Reference Picture"
-            style={styles.media}
-          />
-        )}
-        {question.audio && (
-          <audio
-            controls
-            controlslist="nofullscreen nodownload noplaybackrate"
-            src={question.audio}
-            style={styles.media}
-          >
-            Audio element not supported.
-          </audio>
-        )}
-        {question.video && (
-          <video
-            controls
-            controlslist="nofullscreen nodownload noplaybackrate"
-            src={question.video}
-            style={styles.media}
-          >
-            Video element not supported.
-          </video>
-        )}
-        <h2 style={styles.question}>{question.question}</h2>
-        {shuffledOptions.map((option) => (
-          <button
-            key={option}
-            style={styles.button}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow = "0px 0px 1px 2px #3e8e41")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0px 4px 4px rgba(0, 0, 0, 0.25)")
-            }
-            onClick={() => handleAnswer(option)}
-          >
-            {option}
-          </button>
-        ))}
-      </>
-    );
-  },
-  null,
-  "QuestionComponent"
-);
+  return (
+    <>
+      {question.image && (
+        <img
+          src={question.image}
+          alt="Reference Picture"
+          style={styles.media}
+        />
+      )}
+      {question.audio && (
+        <audio
+          controls
+          controlslist="nofullscreen nodownload noplaybackrate"
+          src={question.audio}
+          style={styles.media}
+        >
+          Audio element not supported.
+        </audio>
+      )}
+      {question.video && (
+        <video
+          controls
+          controlslist="nofullscreen nodownload noplaybackrate"
+          src={question.video}
+          style={styles.media}
+        >
+          Video element not supported.
+        </video>
+      )}
+      <h2 style={styles.question}>{question.question}</h2>
+      {shuffledOptions.map((option) => (
+        <button
+          key={option}
+          style={styles.button}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.boxShadow = "0px 0px 1px 2px #3e8e41")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.boxShadow =
+              "0px 4px 4px rgba(0, 0, 0, 0.25)")
+          }
+          onClick={() => handleAnswer(option)}
+        >
+          {option}
+        </button>
+      ))}
+    </>
+  );
+};
 
-const Result = React.memo(
-  ({ questions, answers }) => {
-    const correctAnswers = answers.filter(
-      (answer, index) => answer === questions[index].answer
-    );
+const Result = ({ questions, answers }) => {
+  const correctAnswers = answers.filter(
+    (answer, index) => answer === questions[index].answer
+  );
 
-    const quizEnded = answers.length === questions.length;
+  const quizEnded = answers.length === questions.length;
 
-    return (
-      <>
-        <h2 style={styles.resultTitle}>Quiz Result</h2>
-        {quizEnded ? (
-          <>
-            <p style={styles.resultText}>
-              You got {correctAnswers.length} out of {questions.length}{" "}
-              questions correct.
-            </p>
-            <ul style={styles.resultList}>
-              {questions.map((question, index) => (
-                <li key={question.question} style={styles.resultItem}>
-                  {`${question.question}`}
-                  {question.options && (
-                    <ul>
-                      {question.options.map((option) => (
-                        <li
-                          key={option}
-                          style={{
-                            fontWeight:
-                              option === answers[index] ? "bold" : "normal",
-                            color:
-                              option === question.answer
-                                ? "green"
-                                : option === answers[index]
-                                ? "red"
-                                : "black",
-                            fontSize: "16px",
-                            fontStyle: "italic",
-                            marginBottom: "0.25rem",
-                            marginLeft: "1.5rem",
-                          }}
-                        >
-                          {answers[index] === option
-                            ? `${option} (Your Answer)`
-                            : option === question.answer
-                            ? `${option} (Correct Answer)`
-                            : option}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
+  return (
+    <>
+      <h2 style={styles.resultTitle}>Quiz Result</h2>
+      {quizEnded ? (
+        <>
           <p style={styles.resultText}>
-            You have run out of time to answer the questions, please try another
-            quiz!
+            You got {correctAnswers.length} out of {questions.length} questions
+            correct.
           </p>
-        )}
-      </>
-    );
-  },
-  null,
-  "ResultComponent"
-);
+          <ul style={styles.resultList}>
+            {questions.map((question, index) => (
+              <li key={question.question} style={styles.resultItem}>
+                {`${question.question}`}
+                {question.options && (
+                  <ul>
+                    {question.options.map((option) => (
+                      <li
+                        key={option}
+                        style={{
+                          fontWeight:
+                            option === answers[index] ? "bold" : "normal",
+                          color:
+                            option === question.answer
+                              ? "green"
+                              : option === answers[index]
+                              ? "red"
+                              : "black",
+                          fontSize: "16px",
+                          fontStyle: "italic",
+                          marginBottom: "0.25rem",
+                          marginLeft: "1.5rem",
+                        }}
+                      >
+                        {answers[index] === option
+                          ? `${option} (Your Answer)`
+                          : option === question.answer
+                          ? `${option} (Correct Answer)`
+                          : option}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p style={styles.resultText}>
+          You have run out of time to answer the questions, please try another
+          quiz!
+        </p>
+      )}
+    </>
+  );
+};
 
-const ProgressBar = React.memo(
-  ({ timeElapsed, totalTime }) => {
-    const progress = ((totalTime - timeElapsed) / totalTime) * 100;
+const ProgressBar = ({ timeElapsed, totalTime }) => {
+  const progress = ((totalTime - timeElapsed) / totalTime) * 100;
 
-    return (
-      <div style={styles.progressBar}>
-        <div style={{ ...styles.progressFill, width: `${progress}%` }}></div>
+  return (
+    <div style={styles.progressBar}>
+      <div style={{ ...styles.progressFill, width: `${progress}%` }}></div>
+    </div>
+  );
+};
+
+const QuizHeader = ({
+  currentQuestion,
+  totalQuestions,
+  timeElapsed,
+  totalTime,
+}) => {
+  return (
+    <>
+      <ProgressBar timeElapsed={timeElapsed} totalTime={totalTime} />
+      <div style={styles.questionHeader}>
+        <div>{`Question ${currentQuestion + 1} of ${totalQuestions}`}</div>
+        <div>{totalTime - timeElapsed} seconds left</div>
       </div>
-    );
-  },
-  null,
-  "ProgressBarComponent"
-);
-
-const QuizHeader = React.memo(
-  ({ currentQuestion, totalQuestions, timeElapsed, totalTime }) => {
-    return (
-      <>
-        <ProgressBar timeElapsed={timeElapsed} totalTime={totalTime} />
-        <div style={styles.questionHeader}>
-          <div>{`Question ${currentQuestion + 1} of ${totalQuestions}`}</div>
-          <div>{totalTime - timeElapsed} seconds left</div>
-        </div>
-      </>
-    );
-  },
-  null,
-  "QuizHeaderComponent"
-);
+    </>
+  );
+};
 
 const useQuizTimer = (totalTime, currentQuestion) => {
   const [timeElapsed, setTimeElapsed] = useState(0);
@@ -301,56 +290,52 @@ const useQuizTimer = (totalTime, currentQuestion) => {
   return timeElapsed;
 };
 
-export const Quiz = React.memo(
-  ({ questions, totalTime = 60 }) => {
-    const [state, dispatch] = useReducer(reducer, {
-      currentQuestion: 0,
-      answers: [],
-      timeElapsed: 0,
-    });
+export const Quiz = ({ questions, totalTime = 60 }) => {
+  const [state, dispatch] = useReducer(reducer, {
+    currentQuestion: 0,
+    answers: [],
+    timeElapsed: 0,
+  });
 
-    const { currentQuestion, answers } = state;
-    const totalQuestions = questions.length;
+  const { currentQuestion, answers } = state;
+  const totalQuestions = questions.length;
 
-    // Use the custom hook for timer logic
-    const timeElapsed = useQuizTimer(totalTime, currentQuestion);
+  // Use the custom hook for timer logic
+  const timeElapsed = useQuizTimer(totalTime, currentQuestion);
 
-    const handleAnswer = useCallback(
-      (answer) => {
-        dispatch({ type: "SET_ANSWER", payload: answer });
-        dispatch({
-          type: "SET_CURRENT_QUESTION",
-          payload: currentQuestion + 1,
-        });
-      },
-      [currentQuestion]
-    );
+  const handleAnswer = useCallback(
+    (answer) => {
+      dispatch({ type: "SET_ANSWER", payload: answer });
+      dispatch({
+        type: "SET_CURRENT_QUESTION",
+        payload: currentQuestion + 1,
+      });
+    },
+    [currentQuestion]
+  );
 
-    return (
-      <div style={styles.container}>
-        <div style={styles.questionContainer}>
-          {currentQuestion < totalQuestions && timeElapsed < totalTime ? (
-            <>
-              <QuizHeader
-                currentQuestion={currentQuestion}
-                totalQuestions={totalQuestions}
-                timeElapsed={timeElapsed}
-                totalTime={totalTime}
-              />
-              <Question
-                question={questions[currentQuestion]}
-                handleAnswer={handleAnswer}
-              />
-            </>
-          ) : (
-            <>
-              <Result questions={questions} answers={answers} />
-            </>
-          )}
-        </div>
+  return (
+    <div style={styles.container}>
+      <div style={styles.questionContainer}>
+        {currentQuestion < totalQuestions && timeElapsed < totalTime ? (
+          <>
+            <QuizHeader
+              currentQuestion={currentQuestion}
+              totalQuestions={totalQuestions}
+              timeElapsed={timeElapsed}
+              totalTime={totalTime}
+            />
+            <Question
+              question={questions[currentQuestion]}
+              handleAnswer={handleAnswer}
+            />
+          </>
+        ) : (
+          <>
+            <Result questions={questions} answers={answers} />
+          </>
+        )}
       </div>
-    );
-  },
-  null,
-  "QuizComponent"
-);
+    </div>
+  );
+};
