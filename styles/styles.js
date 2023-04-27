@@ -11,7 +11,7 @@ export const quizContainer = {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  marginBottom: "10rem",
+  marginBottom: "5rem",
 };
 
 export const pageTitle = {

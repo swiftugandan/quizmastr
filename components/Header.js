@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faInfoCircle,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
   const styles = {
@@ -29,22 +25,22 @@ export const Header = () => {
       fontWeight: "bold",
     },
     icon: {
-      marginRight: "8px",
       fontSize: "24px",
     },
     links: {
       display: "flex",
       alignItems: "center",
-      justifyContent: "flex-end",
-      flexGrow: "1",
-      marginLeft: "24px",
     },
     link: {
-      marginLeft: "24px",
       textDecoration: "none",
       color: "#fff",
       fontSize: "16px",
       fontWeight: "bold",
+    },
+    pageTitle: {
+      fontSize: "1.5rem",
+      fontFamily: "sans-serif",
+      opacity: "0.4",
     },
   };
 
@@ -52,6 +48,9 @@ export const Header = () => {
     <header style={styles.header}>
       <Link href="/" style={styles.logo}>
         <FontAwesomeIcon icon={faHome} style={styles.icon} />
+      </Link>
+      <Link href="/" style={styles.logo}>
+        <p style={styles.pageTitle}>Quizmastr</p>
       </Link>
       <nav style={styles.links}>
         <Link href="/about" style={styles.link}>
