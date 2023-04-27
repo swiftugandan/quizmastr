@@ -10,11 +10,12 @@ const styles = {
     marginRight: "10px",
   },
   refreshIcon: {
+    backgroundColor: "#2d2d2d",
     borderRadius: "50%",
     fontSize: "2rem",
     boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 1)",
     cursor: "pointer",
-    padding: "1rem",
+    padding: "0.75rem",
   },
   flexContainer: {
     display: "flex",
@@ -22,7 +23,7 @@ const styles = {
     alignItems: "center",
   },
   footer: {
-    backgroundColor: "#2d2d2d",
+    backgroundColor: "hsla(0, 0%, 0%, 0.5)",
     color: "#fff",
     padding: "10px",
     position: "fixed",
