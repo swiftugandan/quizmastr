@@ -7,6 +7,11 @@ const styles = {
     display: "flex",
     minHeight: "100vh",
     flexDirection: "column",
+    backgroundImage: "url('/background.png')",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
   },
   content: {
     flex: 1,

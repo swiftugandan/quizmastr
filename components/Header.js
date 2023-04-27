@@ -10,7 +10,7 @@ export const Header = () => {
       alignItems: "center",
       height: "64px",
       padding: "0 24px",
-      backgroundColor: "#2d2d2d",
+      backgroundColor: "hsla(0, 0%, 0%, 0.8)",
       color: "#fff",
       position: "fixed",
       top: "0",
