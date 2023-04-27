@@ -2,20 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import Ajv from "ajv";
 import { Quiz } from "@/components/Quiz";
-import {
-  overlay,
-  pageTitle,
-  newQuizButton,
-  quizContainer,
-} from "@/styles/styles";
+import { overlay, pageTitle, quizContainer } from "@/styles/styles";
 
 const QuizPage = ({ questions }) => {
   const router = useRouter();
   const { year, subject } = router.query;
-
-  const handleReload = () => {
-    window.location.reload();
-  };
 
   return (
     <div style={overlay}>
@@ -24,20 +15,6 @@ const QuizPage = ({ questions }) => {
           {subject} Quiz (Level {year})
         </h1>
         <Quiz questions={questions} />
-        <button
-          style={newQuizButton}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.boxShadow =
-              "0px 0px 1px 2px rgba(245, 166, 35, 0.75)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.boxShadow =
-              "0px 4px 4px rgba(0, 0, 0, 0.25)")
-          }
-          onClick={handleReload}
-        >
-          New Quiz
-        </button>
       </div>
     </div>
   );

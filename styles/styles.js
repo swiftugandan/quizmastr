@@ -11,6 +11,7 @@ export const quizContainer = {
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
+  marginBottom: "10rem",
 };
 
 export const pageTitle = {
@@ -32,24 +33,12 @@ export const pageSubTitle = {
   marginTop: "1rem",
 };
 
-export const newQuizButton = {
-  display: "block",
-  width: "90%",
-  padding: "1rem",
-  marginBottom: "4rem",
-  borderRadius: "0.5rem",
-  backgroundColor: "rgb(0 0 0)",
-  color: "#fff",
-  fontSize: "1.8rem",
-  cursor: "pointer",
-  border: "1px solid #fff",
-};
-
 export const container = {
   width: "100%",
   maxWidth: "1100px",
   margin: "0 auto",
   padding: "0 1rem",
+  marginBottom: "4rem",
 };
 
 export const yearsContainer = {

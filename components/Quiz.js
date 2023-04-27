@@ -231,9 +231,8 @@ const Result = ({ questions, answers }) => {
           </ul>
         </>
       ) : (
-        <p style={styles.resultText}>
-          You have run out of time to answer the questions, please try another
-          quiz!
+        <p style={{ ...styles.resultText, margin: "2rem" }}>
+          You have run out of time, please try another quiz!
         </p>
       )}
     </>
