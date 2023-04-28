@@ -51,7 +51,11 @@ const styles = {
 
 const SocialIcons = () => (
   <>
-    <Link href="https://github.com/swiftugandan/quizmastr">
+    <Link
+      href="https://github.com/swiftugandan/quizmastr"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <FontAwesomeIcon
         icon={faGithub}
         style={{ ...styles.socialIcon, marginLeft: "0px" }}
