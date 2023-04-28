@@ -4,6 +4,11 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta
+          name="description"
+          content="Test your knowledge and learn new things in a fun and interactive way."
+          key="desc"
+        />
         <link
           rel="icon"
           type="image/png"
