@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -58,25 +58,17 @@ const SocialIcons = () => (
         aria-label="GitHub"
       />
     </Link>
-    <FontAwesomeIcon
-      icon={faTwitter}
-      style={styles.socialIcon}
-      aria-label="Twitter"
-    />
+    <Link href="#">
+      <FontAwesomeIcon
+        icon={faTwitter}
+        style={styles.socialIcon}
+        aria-label="Twitter"
+      />
+    </Link>
   </>
 );
 
 export const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  const isBrowser = typeof window !== "undefined";
-
-  const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect;
-
-  useIsomorphicLayoutEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   const handleRefresh = () => {
     window.location.reload();
   };
@@ -89,8 +81,8 @@ export const Footer = () => {
         <div style={styles.leftContainer}>
           <p style={{ margin: 0 }}>© {currentYear}</p>
         </div>
-        {isVisible && (
-          <div style={styles.centreContainer}>
+        <div style={styles.centreContainer}>
+          <Link href="#">
             <FontAwesomeIcon
               icon={faRefresh}
               style={styles.refreshIcon}
@@ -103,8 +95,8 @@ export const Footer = () => {
                   "0px 4px 4px rgba(0, 0, 0, 0.25)")
               }
             />
-          </div>
-        )}
+          </Link>
+        </div>
         <div style={styles.rightContainer}>
           <SocialIcons />
         </div>
