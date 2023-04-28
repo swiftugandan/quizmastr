@@ -7,7 +7,22 @@ import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 const styles = {
   socialIcon: {
     fontSize: "1.5rem",
-    marginRight: "10px",
+    marginLeft: "1rem",
+  },
+  rightContainer: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "right",
+  },
+  leftContainer: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "left",
+  },
+  centreContainer: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
   },
   refreshIcon: {
     backgroundColor: "#2d2d2d",
@@ -15,7 +30,7 @@ const styles = {
     fontSize: "2rem",
     boxShadow: "2px 2px 5px 0px rgba(0, 0, 0, 1)",
     cursor: "pointer",
-    padding: "0.75rem",
+    padding: "0.5rem",
   },
   flexContainer: {
     display: "flex",
@@ -35,11 +50,11 @@ const styles = {
 };
 
 const SocialIcons = () => (
-  <div style={styles.flexContainer}>
+  <>
     <Link href="https://github.com/swiftugandan/quizmastr">
       <FontAwesomeIcon
         icon={faGithub}
-        style={styles.socialIcon}
+        style={{ ...styles.socialIcon, marginLeft: "0px" }}
         aria-label="GitHub"
       />
     </Link>
@@ -48,7 +63,7 @@ const SocialIcons = () => (
       style={styles.socialIcon}
       aria-label="Twitter"
     />
-  </div>
+  </>
 );
 
 export const Footer = () => {
@@ -71,22 +86,28 @@ export const Footer = () => {
   return (
     <div style={styles.footer}>
       <div style={styles.flexContainer}>
-        <p style={{ margin: 0 }}>© {currentYear}</p>
+        <div style={styles.leftContainer}>
+          <p style={{ margin: 0 }}>© {currentYear}</p>
+        </div>
         {isVisible && (
-          <FontAwesomeIcon
-            icon={faRefresh}
-            style={styles.refreshIcon}
-            onClick={handleRefresh}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow = "0px 0px 1px 2px #3e8e41")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0px 4px 4px rgba(0, 0, 0, 0.25)")
-            }
-          />
+          <div style={styles.centreContainer}>
+            <FontAwesomeIcon
+              icon={faRefresh}
+              style={styles.refreshIcon}
+              onClick={handleRefresh}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.boxShadow = "0px 0px 1px 2px #3e8e41")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.boxShadow =
+                  "0px 4px 4px rgba(0, 0, 0, 0.25)")
+              }
+            />
+          </div>
         )}
-        <SocialIcons />
+        <div style={styles.rightContainer}>
+          <SocialIcons />
+        </div>
       </div>
     </div>
   );

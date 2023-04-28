@@ -27,10 +27,6 @@ export const Header = () => {
     icon: {
       fontSize: "24px",
     },
-    links: {
-      display: "flex",
-      alignItems: "center",
-    },
     link: {
       textDecoration: "none",
       color: "#fff",
@@ -42,21 +38,40 @@ export const Header = () => {
       fontFamily: "sans-serif",
       opacity: "0.4",
     },
+    rightContainer: {
+      flex: 1,
+      display: "flex",
+      justifyContent: "right",
+    },
+    leftContainer: {
+      flex: 1,
+      display: "flex",
+      justifyContent: "left",
+    },
+    centreContainer: {
+      flex: 1,
+      display: "flex",
+      justifyContent: "center",
+    },
   };
 
   return (
     <header style={styles.header}>
-      <Link href="/" style={styles.logo}>
-        <FontAwesomeIcon icon={faHome} style={styles.icon} />
-      </Link>
-      <Link href="/" style={styles.logo}>
-        <p style={styles.pageTitle}>Quizmastr</p>
-      </Link>
-      <nav style={styles.links}>
+      <div style={styles.leftContainer}>
+        <Link href="/" style={styles.logo}>
+          <FontAwesomeIcon icon={faHome} style={styles.icon} />
+        </Link>
+      </div>
+      <div style={styles.centreContainer}>
+        <Link href="/" style={styles.logo}>
+          <p style={styles.pageTitle}>Quizmastr</p>
+        </Link>
+      </div>
+      <div style={styles.rightContainer}>
         <Link href="/about" style={styles.link}>
           <FontAwesomeIcon icon={faInfoCircle} style={styles.icon} />
         </Link>
-      </nav>
+      </div>
     </header>
   );
 };
