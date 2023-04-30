@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
-export const Header = () => {
+export const Header = ({ toggleVisibility }) => {
   const styles = {
     header: {
       display: "flex",
@@ -68,9 +68,15 @@ export const Header = () => {
         </Link>
       </div>
       <div style={styles.rightContainer}>
-        <Link href="/about" style={styles.link}>
+        {/* <Link href="/about" style={styles.link}>
           <FontAwesomeIcon icon={faInfoCircle} style={styles.icon} />
-        </Link>
+        </Link> */}
+        <button
+          style={{ ...styles.link, background: "none", border: "none" }}
+          onClick={toggleVisibility}
+        >
+          <FontAwesomeIcon icon={faInfoCircle} style={styles.icon} />
+        </button>
       </div>
     </header>
   );

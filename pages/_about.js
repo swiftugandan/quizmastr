@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { overlay } from "@/styles/styles";
 
 const AboutUs = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  if (!isVisible) {
+    return <></>;
+  }
+
   return (
     <div style={overlay}>
       <div style={styles.container}>
+        <button style={styles.closeButton} onClick={toggleVisibility}>
+          &times;
+        </button>
         <h2 style={styles.heading}>About Quizmastr</h2>
         <p style={styles.text}>
           Welcome to quizmastr! Our team consists of educators and developers
@@ -43,6 +56,7 @@ const styles = {
     marginTop: "6rem",
     marginBottom: "6rem",
     fontFamily: "sans-serif",
+    position: "relative",
   },
   heading: {
     fontSize: "30px",
@@ -57,6 +71,15 @@ const styles = {
     textAlign: "justify",
     textJustify: "inter-word",
     color: "#333",
+  },
+  closeButton: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    background: "transparent",
+    border: "none",
+    fontSize: "20px",
+    cursor: "pointer",
   },
 };
 
