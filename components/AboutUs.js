@@ -28,6 +28,7 @@ const styles = {
     border: "none",
     fontSize: "1.25rem",
     cursor: "pointer",
+    color: "#333",
   },
   container: {
     borderRadius: "0.625rem",

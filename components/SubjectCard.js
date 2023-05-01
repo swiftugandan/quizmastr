@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function SubjectCard(props) {
   const cardStyle = {
-    backgroundColor: "#F5A623", // orange background color
+    backgroundColor: "rgb(255 129 0 / 27%)", // orange background color
     color: "#FFF", // white text color
     borderRadius: "10px",
     padding: "20px",

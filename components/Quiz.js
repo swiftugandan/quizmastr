@@ -9,7 +9,7 @@ import { shuffle } from "lodash";
 
 const styles = {
   container: {
-    backgroundColor: "#e6f7ff",
+    backgroundColor: "#e6f7ff21",
     padding: "1rem",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",
@@ -18,7 +18,7 @@ const styles = {
     margin: "0.5rem",
   },
   questionContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: "rgb(255 255 255 / 75%)",
     padding: "1rem",
     borderRadius: "10px",
     boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.2)",

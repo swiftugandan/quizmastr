@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function YearCard(props) {
   const cardStyle = {
-    backgroundColor: "#0072C6", // blue background color
+    backgroundColor: "#0885ff4f", // blue background color
     color: "#FFF", // white text color
     borderRadius: "10px",
     padding: "20px",
