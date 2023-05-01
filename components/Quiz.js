@@ -56,7 +56,7 @@ const styles = {
     fontSize: "1.5em",
     marginBottom: "1.25rem",
     textAlign: "center",
-    color: "#2e64b5",
+    color: "rgb(30 65 118)",
   },
   resultText: {
     fontSize: "1.125em",
