@@ -8,7 +8,7 @@ const styles = {
     display: "flex",
     minHeight: "100vh",
     flexDirection: "column",
-    backgroundImage: "url('/background.png')",
+    backgroundImage: "url('/background.webp')",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
     backgroundPosition: "center",
