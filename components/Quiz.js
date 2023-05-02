@@ -16,6 +16,8 @@ const styles = {
     maxWidth: "500px",
     minWidth: "260px",
     margin: "0.5rem",
+    backdropFilter: "blur(10px)",
+    border: "1px solid rgba(255,255,255,0.5)",
   },
   questionContainer: {
     backgroundColor: "rgb(255 255 255 / 75%)",
